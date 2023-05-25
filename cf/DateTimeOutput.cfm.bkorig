@@ -1,0 +1,37 @@
+<cfobject action="create" type="java" class="java.awt.Toolkit" name="fileObj">
+
+<!---
+/*
+<cfobject action="create" type="java" class="java.awt.datatransfer.StringSelection" name="stringSelect">
+*/
+
+/*
+<cfset stringSelectx = createObject( "java", "java.awt.datatransfer.Transferable" )>
+<cfset stringSelect = createObject( "java", "java.awt.datatransfer.StringSelection" ).init('hi')>
+*/
+--->
+
+
+<cfscript>
+	//cfabort();
+	
+	
+    currentDate = dateFormat(now(), "yyyy-MM-dd");
+    currentTime = timeFormat(now(), "HH:mm:ss");
+    dashes = repeatString("-", 50);
+
+    // Generate the output string with the current date, time, and dashes
+    output = currentDate & " " & currentTime & chr(13) & chr(10) & dashes;
+
+    // Copy the output to the clipboard
+    //setClipboard(output);
+	
+	stringSelect = createObject( "java", "java.awt.datatransfer.StringSelection" ).init(output);
+	
+	//writeDump(fileObj.getDefaultToolkit().getSystemClipboard() );
+	//writeDump(stringSelect );
+	fileObj.getDefaultToolkit().getSystemClipboard().setContents( stringSelect, stringSelect );
+
+    // Prompt the user to press the spacebar to end the program
+    writeOutput("Output has been copied to the clipboard. Press the spacebar to end the program...");
+</cfscript>
