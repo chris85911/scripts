@@ -1,4 +1,4 @@
-<cfobject action="create" type="java" class="java.awt.Toolkit" name="fileObj">
+<cfobject action="create" type="java" class="java.awt.Toolkit" name="fileObj"> 
 
 <!---
 /*
